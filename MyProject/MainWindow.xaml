@@ -1,0 +1,53 @@
+﻿<Window x:Name="my_Window" x:Class="MyProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+		xmlns:xctk="http://schemas/xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:MyProject"
+        mc:Ignorable="d"
+        Title="MyApp" Height="443" Width="600" Visibility="Visible" Background="#FF14171B" BorderBrush="#FF94FFCE" Foreground="#FFA2A694" OpacityMask="#FF7A3636" Opacity="0.93" BorderThickness="1,0,1,1" MouseDown="my_Window_MouseDown" WindowStyle="None" SizeToContent="Height" Topmost="True" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" SizeChanged="my_Window_SizeChanged">
+	<Grid>
+
+		<TextBox x:Name="textInput" Margin="0,28,0,0" TextWrapping="Wrap" AcceptsReturn="True" Background="#E5191A1D" Foreground="#E5B4EAD9" TextChanged="TextBox_TextChanged" FontSize="17" FontFamily="Source Code Pro" BorderThickness="0" RenderTransformOrigin="1,0.5" UndoLimit="1004" DataContextChanged="textInput_DataContextChanged" Height="414" Width="598" HorizontalAlignment="Left" VerticalAlignment="Top" PreviewKeyDown="textInput_PreviewKeyDown"/>
+
+		<Grid Height="29" VerticalAlignment="Top" Background="#FF94D8C3">
+			<StackPanel Orientation="Horizontal">
+				<Button x:Name="btn_file" HorizontalAlignment="Left" Width="50" Height="20" VerticalAlignment="Top" Margin="7,4,0,0" Background="#FF94D8C3" Padding="0" Content="File" Foreground="#FF23B41A" BorderBrush="#FF23B41A" FontSize="14" Click="btn_file_Click" MouseEnter="btn_file_MouseEnter" MouseLeave="btn_file_MouseLeave">
+
+
+
+				</Button>
+				<Button x:Name="btn_view" HorizontalAlignment="Left" Width="50" Height="20" VerticalAlignment="Top" Margin="7,4,0,0" Background="#FF94D8C3" Padding="0" Content="View" Foreground="#FF23B41A" BorderBrush="#FF23B41A" FontSize="14"/>
+				<Button x:Name="btn_info" HorizontalAlignment="Left" Width="50" Height="20" VerticalAlignment="Top" Margin="7,4,0,0" Background="#FF94D8C3" Padding="0" Content="Info" Foreground="#FF23B41A" BorderBrush="#FF23B41A" FontSize="14" Click="btn_info_Click"/>
+
+
+			</StackPanel>
+			<Button x:Name="Btn1" Content="X" Height="20" Margin="0,4,5,0" VerticalAlignment="Top" Width="20" Background="#FFEA5656" Foreground="White" Padding="2" BorderBrush="White" Click="Button_Click_1" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" RenderTransformOrigin="0,0.5" HorizontalAlignment="Right"/>
+			<Label x:Name="fileNameBar" Content="Untitled" HorizontalAlignment="Center" Margin="180,0,109,0" VerticalAlignment="Top" Width="309" Foreground="#FF23B41A" FontSize="14" RenderTransformOrigin="0.496,0.517" HorizontalContentAlignment="Center"/>
+		</Grid>
+		<StackPanel x:Name="panel_file" HorizontalAlignment="Left" Height="116" Margin="5,10,0,0" VerticalAlignment="Top" Width="98" RenderTransformOrigin="0.24,0.21" OpacityMask="#FF8CCBB7" MouseEnter="panel_file_MouseEnter" MouseLeave="panel_file_MouseLeave">
+			<StackPanel.Background>
+				<SolidColorBrush Color="#0028272C" Opacity="0.875"/>
+			</StackPanel.Background>
+			<Button x:Name="btn_file_newfile" Content="New file" Height="25" Margin="0,17,0,0" Background="#FF8CCBB7" BorderBrush="#FF309E30" Foreground="#FF309E30" Padding="2" HorizontalContentAlignment="Left" BorderThickness="2,2,2,0" Click="btn_file_newfile_Click"/>
+			<Button x:Name="btn_file_openfile" Content="Open file" Height="25" Margin="0" Background="#FF8CCBB7" BorderBrush="#FF309E30" Foreground="#FF309E30" Padding="2" HorizontalContentAlignment="Left" BorderThickness="2,0" Click="btn_file_openfile_Click"/>
+			<Button x:Name="btn_file_savefaile" Content="Save" Height="25" Margin="0" Background="#FF8CCBB7" BorderBrush="#FF309E30" Foreground="#FF309E30" Padding="2" HorizontalContentAlignment="Left" BorderThickness="2,0" Click="btn_file_savefaile_Click"/>
+			<Button x:Name="btn_file_saveasfile" Content="Save as" Height="25" Margin="0" Background="#FF8CCBB7" BorderBrush="#FF309E30" Foreground="#FF309E30" Padding="2" HorizontalContentAlignment="Left" BorderThickness="2,0,2,2" Click="btn_file_saveasfile_Click"/>
+
+		</StackPanel>
+		<StackPanel x:Name="panel_view" HorizontalAlignment="Left" Height="141" Margin="67,10,0,0" VerticalAlignment="Top" Width="187" RenderTransformOrigin="0.24,0.21" OpacityMask="#FF8CCBB7" MouseEnter="panel_file_MouseEnter" MouseLeave="panel_file_MouseLeave">
+			<StackPanel.Background>
+				<SolidColorBrush Color="#008CCBB7" Opacity="0.875"/>
+			</StackPanel.Background>
+			<Border BorderBrush="#FF2F952F" BorderThickness="2" Height="123" Padding="0" Margin="0,18,0,0" Background="#FF8BCBB7">
+				<Button x:Name="btn_color_gray" Content="" HorizontalAlignment="Left" Height="15" Margin="8,8,0,0" VerticalAlignment="Top" Width="15" BorderBrush="White" Background="#FF747474" BorderThickness="2"/>
+				
+			</Border>
+
+
+		</StackPanel>
+
+	</Grid>
+
+</Window>
