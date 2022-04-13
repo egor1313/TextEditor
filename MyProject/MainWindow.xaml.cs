@@ -14,20 +14,25 @@ namespace MyProject
 	public partial class MainWindow : Window
 	{
 
-		bool sirB =  false;
-		bool sirP =  false;
+		bool sir_file_B =  false; // this variebels for logic panel
+		bool sir_file_P =  false;
+		bool sir_view_B =  false;
+		bool sir_view_P =  false;
+
 		bool isSave = false;
-		bool isRenameTitle = false;
-		string filename = "";
+		bool isRenameTitle = false; // for * in name file
+		string filename = ""; // show name file in up progam
 
 		public MainWindow()
 		{
 			InitializeComponent();
-			panel_file.Visibility = Visibility.Hidden;
+			panel_file.Visibility = Visibility.Hidden; // hide panel
+			panel_view.Visibility = Visibility.Hidden;
 		}
 
 
-		public string saveasfile() {
+		public string saveasfile()
+		{ // func for saving file
 			SaveFileDialog saveFileDialog = new SaveFileDialog();
 			if (saveFileDialog.ShowDialog() == false)
 				return "";
@@ -41,7 +46,15 @@ namespace MyProject
 
 		}
 
-		public bool wantyousavefile() {
+		public bool changeTheme(string nametheme)
+		{
+			//do
+
+			return true;
+		}
+
+		public bool wantyousavefile()
+		{                             // asking of save file
 			if (MessageBox.Show("Save this file?", "Warning", MessageBoxButton.YesNo, MessageBoxImage.Question) == MessageBoxResult.Yes)
 			{
 				return true;
@@ -51,35 +64,39 @@ namespace MyProject
 			}
 		}
 
-
-
-		private void TextBox_TextChanged(object sender, TextChangedEventArgs e)
+		public void panel_file_visible(bool bo) //for logic panel
 		{
-		}
-
-		public void panel_file_visible(bool bo) {
 
 			if (bo)
 				panel_file.Visibility = Visibility.Visible;
 			else
 				panel_file.Visibility = Visibility.Hidden;
 		}
+		public void panel_view_visible(bool bo) // this too)
+		{
 
-		private void Button_Click(object sender, RoutedEventArgs e)
+			if (bo)
+				panel_view.Visibility = Visibility.Visible;
+			else
+				panel_view.Visibility = Visibility.Hidden;
+		}
+
+		private void Button_Click(object sender, RoutedEventArgs e) // if click red cross - exit
 		{
 			my_Window.Close();
 		}
 
 
-		private void my_Window_MouseDown(object sender, MouseButtonEventArgs e)
+		private void my_Window_MouseDown(object sender, MouseButtonEventArgs e) // can move window
 		{
-			if (e.LeftButton.ToString() == "Pressed") {
+			if (e.LeftButton.ToString() == "Pressed")
+			{
 				my_Window.DragMove();
 			}
 		}
 
 
-		private void my_Window_SizeChanged(object sender, SizeChangedEventArgs e)
+		private void my_Window_SizeChanged(object sender, SizeChangedEventArgs e) // change window size
 		{
 			if (my_Window.Height < 200) {
 				my_Window.Height = 200;
@@ -113,21 +130,21 @@ namespace MyProject
 
 		private void btn_file_MouseEnter(object sender, MouseEventArgs e)
 		{
-			sirB = true;
-			panel_file_visible(sirB );
+			sir_file_B = true;
+			panel_file_visible(sir_file_B);
 		}
 
 		private void panel_file_MouseEnter(object sender, MouseEventArgs e)
 		{
-			sirP = true;
-			panel_file_visible(sirP);
+			sir_file_P = true;
+			panel_file_visible(sir_file_P);
 		}
 
 		private void btn_file_MouseLeave(object sender, MouseEventArgs e)
 		{
-			Thread.Sleep(500);
-			sirB = false;
-			if (sirP)
+			Thread.Sleep(100);
+			sir_file_B = false;
+			if (sir_file_P)
 				return;
 			else
 				panel_file_visible(false);
@@ -135,8 +152,8 @@ namespace MyProject
 
 		private void panel_file_MouseLeave(object sender, MouseEventArgs e)
 		{
-			sirP = false;
-			if (sirB)
+			sir_file_P = false;
+			if (sir_file_B)
 				return;
 			else
 				panel_file_visible(false);
@@ -192,17 +209,8 @@ namespace MyProject
 			if (filename == "") {
 				filename = saveasfile();
 			}
-			/*
-			SaveFileDialog saveFileDialog = new SaveFileDialog();
-
-			saveFileDialog.Filter = "txt files (*.txt)|*.txt|All files (*.*)|*.*";
-
-			if (saveFileDialog.ShowDialog() == false)
-				return;
-			// получаем выбранный файл
-			filename = saveFileDialog.FileName;*/
 			isSave = true;
-			// сохраняем текст в файл
+			// save text in file
 			File.WriteAllText(filename, textInput.Text);
 
 			fileNameBar.Content = filename;
@@ -220,7 +228,7 @@ namespace MyProject
 			
 		}
 
-		private void textInput_PreviewKeyDown(object sender, KeyEventArgs e)
+		private void textInput_PreviewKeyDown(object sender, KeyEventArgs e) // if change text - add to file name *
 		{
 
 			if (!isRenameTitle)
@@ -228,6 +236,42 @@ namespace MyProject
 			isSave = false;
 			isRenameTitle = true;
 			
+		}
+
+		private void Button_Click_2(object sender, RoutedEventArgs e)
+		{
+
+		}
+
+		private void btn_view_MouseEnter(object sender, MouseEventArgs e)
+		{
+			sir_view_B = true;
+			panel_view_visible(sir_view_B);
+		}
+
+		private void btn_view_MouseLeave(object sender, MouseEventArgs e)
+		{
+			Thread.Sleep(100);
+			sir_view_B = false;
+			if (sir_view_P)
+				return;
+			else
+				panel_view_visible(false);
+		}
+
+		private void panel_view_MouseEnter(object sender, MouseEventArgs e)
+		{
+			sir_view_P = true;
+			panel_view_visible(sir_view_P);
+		}
+
+		private void panel_view_MouseLeave(object sender, MouseEventArgs e)
+		{
+			sir_view_P = false;
+			if (sir_view_B)
+				return;
+			else
+				panel_view_visible(false);
 		}
 	}
 }
